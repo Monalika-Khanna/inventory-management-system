@@ -1,41 +1,272 @@
-<<<<<<< HEAD
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 CoreInventory – Smart Inventory Management System
 
-## Getting Started
+CoreInventory is a modern **Inventory Management System** built using **Next.js and PostgreSQL**.
+It helps businesses track products, manage stock movements, and monitor inventory operations efficiently.
 
-First, run the development server:
+This project was developed as part of a **hackathon challenge** to build a scalable, full-stack inventory management solution.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+# 🧠 Problem Statement
+
+Many small businesses and warehouses struggle with:
+
+* Manual stock tracking
+* Lack of real-time inventory visibility
+* Difficulty tracking incoming and outgoing stock
+* Errors in stock updates
+
+CoreInventory solves these issues by providing a **centralized digital inventory management system** with automated stock updates and analytics.
+
+---
+
+# 💡 Solution
+
+CoreInventory provides a **web-based inventory dashboard** that allows users to:
+
+* Manage products
+* Track incoming stock (receipts)
+* Track outgoing stock (deliveries)
+* Monitor inventory levels in real time
+* Analyze stock status
+
+The system automatically **updates product quantities** whenever stock is received or delivered.
+
+---
+
+# ✨ Key Features
+
+## 📦 Product Management
+
+* Add new products
+* Edit product details
+* Delete products
+* View complete product catalog
+
+## 📥 Stock Receipts
+
+* Record incoming inventory
+* Automatically increase product stock
+
+## 📤 Deliveries
+
+* Track outgoing shipments
+* Automatically decrease stock
+
+## 📊 Inventory Dashboard
+
+* Total products overview
+* Stock analytics
+* Real-time inventory updates
+
+## 🔍 Smart Search & Filters
+
+* Search by product name or SKU
+* Filter by category
+* Filter by stock status
+
+## 🔐 Authentication System
+
+* Secure login system
+* Email/password authentication
+* Protected dashboard routes
+
+---
+
+# 🛠 Tech Stack
+
+## Frontend
+
+* Next.js
+* React
+* JavaScript
+* Modern UI components
+
+## Backend
+
+* Next.js API Routes
+* Node.js
+
+## Database
+
+* PostgreSQL
+
+## Authentication
+
+* Email + Password login
+
+---
+
+# 🏗 System Architecture
+
+User Interface
+↓
+Next.js Frontend
+↓
+Next.js API Routes
+↓
+PostgreSQL Database
+
+The system follows a **full-stack architecture with API-driven data flow**.
+
+---
+
+# 📂 Project Structure
+
+```
+inventory-management-system
+│
+├── app/
+│   ├── api/
+│   │   ├── products/
+│   │   ├── receipts/
+│   │   ├── deliveries/
+│   │   ├── dashboard/
+│   │   └── auth/
+│   │
+│   ├── products/
+│   ├── receipts/
+│   ├── deliveries/
+│   ├── dashboard/
+│   └── login/
+│
+├── components/
+│   ├── Navbar.js
+│   ├── ProductCard.js
+│   └── DashboardStats.js
+│
+├── lib/
+│   └── db.js
+│
+├── public/
+└── README.md
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+# ⚙️ Installation
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Clone the repository:
 
-## Learn More
+```
+git clone https://github.com/SakshiHanwat/inventory-management-system.git
+cd inventory-management-system
+```
 
-To learn more about Next.js, take a look at the following resources:
+Install dependencies:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+npm install
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+# 🔑 Environment Variables
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Create a `.env` file in the root directory.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-=======
-# inventory-management-system
-a hackathon project
->>>>>>> bd28e452eed83db28fe4a663b247691132328f4c
+```
+DATABASE_URL=postgresql://username:password@localhost:5432/inventory_db
+```
+
+---
+
+# 🗄 Database Setup
+
+Run the following SQL commands in PostgreSQL:
+
+```
+CREATE TABLE products (
+  id SERIAL PRIMARY KEY,
+  name TEXT,
+  sku TEXT,
+  category TEXT,
+  unit TEXT,
+  stock INT
+);
+
+CREATE TABLE receipts (
+  id SERIAL PRIMARY KEY,
+  product_id INT,
+  quantity INT,
+  received_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE deliveries (
+  id SERIAL PRIMARY KEY,
+  product_id INT,
+  quantity INT,
+  delivered_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
+  email TEXT UNIQUE,
+  password TEXT
+);
+```
+
+---
+
+# ▶️ Run the Project
+
+Start the development server:
+
+```
+npm run dev
+```
+
+Open the application:
+
+```
+http://localhost:3000
+```
+
+---
+
+# 📷 Application Screens
+
+### Dashboard
+
+Overview of inventory analytics and stock insights.
+
+### Products Page
+
+Manage all products with filters and search.
+
+### Receipts
+
+Record incoming stock and automatically update inventory.
+
+### Deliveries
+
+Track outgoing stock and maintain accurate inventory levels.
+
+---
+
+# 🎯 Future Improvements
+
+* Barcode scanning for product tracking
+* Low-stock alerts
+* Multi-warehouse inventory management
+* Real-time notifications
+* Advanced inventory analytics
+
+---
+
+# 🤝 Contributors
+
+This project was developed during a Hackathon by the following team members:
+
+- **Sakshi Hanwat** – Team Leader  
+- **Palak Khare** – Developer  
+- **Monalika Khanna** – Developer  
+
+GitHub Repository:  
+https://github.com/SakshiHanwat/inventory-management-system
+
+---
+
+# 📜 License
+
+This project is open-source and available under the **MIT License**.
